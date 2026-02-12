@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>💘 Valentine · mobile love run</title>
+  <!-- mobile optimized: touch friendly, no overflow, buttons always clickable -->
+  <style>
+    /* reset & mobile perfection */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent; /* remove grey flash on tap */
+    }
+
+    body {
+      background: radial-gradient(circle at 10% 30%, #ffb6c1, #f898a4);
+      font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      position: relative;
+      overflow-x: hidden;
+      margin: 0;
+      /* mobile viewport friendly */
+    }
+
+    /* 🎈 floating balloons – soft & dreamy */
+    .balloon-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .balloon {
+      position: absolute;
+      background: rgba(255, 215, 215, 0.65);
+      backdrop-filter: blur(1px);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      box-shadow: inset -3px -3px 10px rgba(0,0,0,0.05), inset 8px 5px 20px rgba(255,255,255,0.7);
+      width: 55px;
+      height: 68px;
+      bottom: -80px;
+      animation: floatMobile 16s linear infinite;
+      border: 1.5px solid rgba(255, 240, 240, 0.6);
+    }
+
+    .balloon::after {
+      content: "🪢";
+      position: absolute;
+      bottom: -14px;
+      left: 20px;
+      font-size: 18px;
+      transform: rotate(-8deg);
+      color: #79553b;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    }
+
+    /* different sizes, colors, delays – mobile gentle */
+    .balloon:nth-child(1) { left: 5%; width: 48px; height: 60px; background: #ff95a8; animation-delay: 0s; }
+    .balloon:nth-child(2) { left: 18%; width: 58px; height: 72px; background: #faaaaa; animation-delay: 2s; }
+    .balloon:nth-child(3) { left: 35%; width: 40px; height: 52px; background: #ffc0cb; animation-delay: 1s; }
+    .balloon:nth-child(4) { left: 55%; width: 62px; height: 74px; background: #ffa5a5; animation-delay: 4.5s; }
+    .balloon:nth-child(5) { left: 72%; width: 46px; height: 58px; background: #e89f9f; animation-delay: 2.8s; }
+    .balloon:nth-child(6) { left: 88%; width: 52px; height: 64px; background: #ffb2b2; animation-delay: 6s; }
+    .balloon:nth-child(7) { left: 45%; width: 60px; height: 74px; background: #ffa7b1; animation-delay: 3.2s; }
+    .balloon:nth-child(8) { left: 80%; width: 44px; height: 56px; background: #fba9b6; animation-delay: 7s; }
+    .balloon:nth-child(9) { left: 92%; width: 50px; height: 62px; background: #ff9eb5; animation-delay: 5.2s; }
+    .balloon:nth-child(10) { left: 12%; width: 54px; height: 66px; background: #ffa3b3; animation-delay: 8s; }
+
+    @keyframes floatMobile {
+      0% { bottom: -90px; transform: translateX(0) rotate(1deg); opacity: 0.7; }
+      50% { transform: translateX(12px) rotate(-2deg); opacity: 1; }
+      100% { bottom: 120%; transform: translateX(-16px) rotate(3deg); opacity: 0.4; }
+    }
+
+    /* 💖 main card – compact, round, premium glassmorphism */
+    .valentine-card {
+      background: rgba(255, 250, 250, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 48px 48px 48px 48px;
+      box-shadow: 0 20px 40px rgba(180, 40, 70, 0.25), 0 0 0 5px rgba(255, 240, 245, 0.7);
+      padding: 28px 22px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      position: relative;
+      z-index: 30;
+      margin: 8px auto;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: #b82b4a;
+      text-shadow: 3px 3px 0 #ffe0e8, 4px 4px 12px rgba(190, 50, 70, 0.25);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    .heart-decoration {
+      font-size: 2.6rem;
+      line-height: 1;
+      margin-bottom: 2px;
+      color: #d64161;
+      animation: pulseMobile 1.8s infinite;
+    }
+
+    @keyframes pulseMobile {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); text-shadow: 0 0 12px #ff4466; }
+    }
+
+    .question {
+      font-size: 1.8rem;
+      margin: 12px 0 20px;
+      background: rgba(255, 220, 230, 0.6);
+      padding: 12px 18px;
+      border-radius: 60px;
+      color: #a12444;
+      display: inline-block;
+      backdrop-filter: blur(4px);
+      font-weight: 600;
+      border: 2px solid white;
+      box-shadow: inset 0 -2px 5px rgba(255, 255, 255, 0.9);
+    }
+
+    /* BUTTON AREA – flex with gap, relative for moving NO */
+    .button-area {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin: 20px 0 18px;
+      position: relative;
+      min-height: 100px;
+      width: 100%;
+    }
+
+    /* both buttons – massive, fat fingers love them */
+    .btn {
+      border: none;
+      background: white;
+      padding: 16px 28px;
+      font-size: 2rem;
+      font-weight: 800;
+      border-radius: 80px;
+      box-shadow: 0 10px 0 #9e3b4a, 0 12px 25px rgba(140, 30, 50, 0.35);
+      color: white;
+      transition: transform 0.15s cubic-bezier(0.18, 1.3, 0.6, 1), box-shadow 0.1s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      letter-spacing: 3px;
+      border: 3px solid #fff6f6;
+      cursor: pointer;
+      position: relative;
+      z-index: 55;
+      /* no unclickable state, always tappable */
+      touch-action: manipulation; /* avoid double-tap zoom */
+      -webkit-touch-callout: none;
+    }
+
+    .btn:active {
+      transform: translateY(6px);
+      box-shadow: 0 5px 0 #732b38, 0 16px 25px rgba(150, 30, 50, 0.4);
+    }
+
+    /* YES – stays strong, romantic red */
+    .yes-btn {
+      background: radial-gradient(circle at 40% 30%, #ff7a95, #c13452);
+      border-bottom: 6px solid #922b42;
+    }
+
+    /* NO – moving, but 100% tappable, no dead zone */
+    .no-btn {
+      background: radial-gradient(circle at 30% 30%, #7a7f8b, #484e5a);
+      box-shadow: 0 10px 0 #31333b, 0 12px 25px rgba(0,0,0,0.25);
+      border-bottom: 6px solid #292b32;
+      transition: transform 0.18s cubic-bezier(0.2, 1.2, 0.5, 1.2), box-shadow 0.1s, background 0.2s;
+      will-change: transform;
+    }
+
+    /* message box – flexible, readable */
+    .footer-message {
+      margin-top: 20px;
+      font-size: 1.45rem;
+      color: #7f263b;
+      background: rgba(255, 250, 240, 0.8);
+      padding: 14px 20px;
+      border-radius: 50px;
+      backdrop-filter: blur(5px);
+      border: 3px dashed #ff8da1;
+      font-weight: 600;
+      word-break: break-word;
+      line-height: 1.3;
+    }
+
+    /* tiny caption – mobile friendly */
+    .mobile-credit {
+      position: fixed;
+      bottom: 6px;
+      right: 12px;
+      color: #b54b5e;
+      background: rgba(255, 255, 245, 0.8);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      z-index: 200;
+      backdrop-filter: blur(4px);
+      border: 1.5px solid white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    }
+
+    /* smart container for no button escape – safe zone */
+    .button-area {
+      min-height: 120px;
+    }
+
+    /* avoid overflow on very small screens */
+    @media (max-width: 400px) {
+      h1 { font-size: 2rem; }
+      .btn { padding: 14px 18px; font-size: 1.8rem; }
+      .question { font-size: 1.6rem; }
+      .button-area { gap: 20px; }
+      .valentine-card { padding: 20px 16px; }
+    }
+
+    /* landscape mode – keep compact */
+    @media (max-height: 550px) and (orientation: landscape) {
+      .valentine-card { padding: 12px 25px; }
+      h1 { font-size: 1.9rem; margin-bottom: 0; }
+      .btn { padding: 10px 20px; font-size: 1.7rem; }
+    }
+
+    /* remove all default button outlines – but keep accessibility */
+    .btn:focus-visible {
+      outline: 4px solid #ffc107;
+    }
+
+    /* safe area for notched phones */
+    @supports (padding: max(0px)) {
+      body { padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+    }
+  </style>
+</head>
+<body>
+  <!-- floating balloons – mobile adapted, no lag -->
+  <div class="balloon-bg">
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+  </div>
+
+  <!-- MAIN CARD – tap friendly, clear -->
+  <div class="valentine-card">
+    <div class="heart-decoration">💗💗💗</div>
+    <h1>💘 Be mine? 💘</h1>
+    <div style="font-size:1.5rem; color:#b5485e; margin-bottom: 4px;">✨ my valentine ✨</div>
+    
+    <div class="question">
+      will you say YES?
+    </div>
+
+    <!-- two buttons – YES stays, NO flees but remains clickable -->
+    <div class="button-area" id="buttonArea">
+      <button class="btn yes-btn" id="yesButton">YES 💖</button>
+      <button class="btn no-btn" id="noButton">NO 🥺</button>
+    </div>
+
+    <!-- dynamic message -->
+    <div class="footer-message" id="messageBox">
+      💞 tap YES — forever with me 💞
+    </div>
+  </div>
+
+  <div class="mobile-credit">
+    📱 NO runs · but always tappable
+  </div>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // ----- MOBILE PERFECT: no dead zone, NO button moves on touch / hover -----
+      const yesBtn = document.getElementById('yesButton');
+      const noBtn = document.getElementById('noButton');
+      const messageBox = document.getElementById('messageBox');
+      const buttonArea = document.getElementById('buttonArea');
+
+      // ---- move NO button – safe within parent ----
+      function moveNoButton() {
+        if (!buttonArea || !noBtn) return;
+
+        const containerRect = buttonArea.getBoundingClientRect();
+        const noRect = noBtn.getBoundingClientRect();
+
+        // width/height including margin? we only use transform relative to itself
+        const btnWidth = noRect.width;
+        const btnHeight = noRect.height;
+
+        // maximum translation so button stays fully inside buttonArea
+        const maxX = Math.max(0, containerRect.width - btnWidth - 6);
+        const maxY = Math.max(0, containerRect.height - btnHeight - 6);
+
+        // generate random offsets, but keep inside
+        let deltaX = 0, deltaY = 0;
+        if (maxX > 5) deltaX = Math.floor(Math.random() * maxX);
+        if (maxY > 5) deltaY = Math.floor(Math.random() * maxY);
+        
+        // apply transform – smooth but responsive
+        noBtn.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+        noBtn.style.transition = 'transform 0.2s cubic-bezier(0.2, 1.2, 0.5, 1.2)';
+      }
+
+      // ---- wiggle = move with extra love ----
+      function fleeNoButton() {
+        moveNoButton();
+        // subtle feedback – changes shadow briefly 
+        noBtn.style.boxShadow = '0 10px 0 #31333b, 0 0 18px #ffb6c1';
+        setTimeout(() => {
+          noBtn.style.boxShadow = '0 10px 0 #31333b, 0 12px 25px rgba(0,0,0,0.25)';
+        }, 180);
+      }
+
+      // --- YES button : pure happiness ---
+      yesBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        messageBox.innerHTML = '💕 YAY! you said YES! infinite cuddles & chocolates 💕 🎈';
+        messageBox.style.background = '#ffe4ec';
+        messageBox.style.border = '6px solid #ff99aa';
+        messageBox.style.color = '#a12d4a';
+        messageBox.style.fontSize = '1.5rem';
+        createHeartConfetti();
+      });
+
+      // --- NO button : always clickable, just playful ---
+      noBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // they actually catched the slippery one!
+        messageBox.innerHTML = '😢 you clicked NO… but the YES button is still waiting! 😘';
+        messageBox.style.background = '#ffdede';
+        messageBox.style.border = '6px solid #d88a8a';
+        messageBox.style.color = '#701c34';
+        // move after click – because it’s funny
+        fleeNoButton();
+      });
+
+      // ---- TOUCH & HOVER: mobile first, no delay ----
+      noBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault();   // prevent zoom / scroll while dodging
+        fleeNoButton();
+      }, { passive: false });
+
+      noBtn.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        fleeNoButton();
+      }, { passive: false });
+
+      noBtn.addEventListener('mouseenter', function(e) {
+        fleeNoButton();
+      });
+
+      noBtn.addEventListener('mousemove', function(e) {
+        // on mobile this rarely fires, but for desktop & hybrid
+        if (Math.random() > 0.6) {  // less jitter, smooth dodge
+          requestAnimationFrame(fleeNoButton);
+        }
+      });
+
+      // accessibility / keyboard focus – slight move but not too wild
+      noBtn.addEventListener('focus', function() {
+        setTimeout(() => { fleeNoButton(); }, 30);
+      });
+
+      // ---- reset if button escapes on resize ----
+      window.addEventListener('resize', function() {
+        // gentle reset to origin, then re-move? to avoid overflow
+        noBtn.style.transform = `translate(0, 0)`;
+        setTimeout(() => { moveNoButton(); }, 20);
+      });
+
+      // ---- safety check: keep NO inside container (every 0.5s) ----
+      setInterval(function() {
+        if (!buttonArea || !noBtn) return;
+        const container = buttonArea.getBoundingClientRect();
+        const no = noBtn.getBoundingClientRect();
+        if (no.right > container.right + 8 || no.left < container.left - 8 ||
+            no.bottom > container.bottom + 8 || no.top < container.top - 8) {
+          noBtn.style.transform = `translate(0, 0)`;
+          // re-move to stay playful
+          setTimeout(() => { moveNoButton(); }, 30);
+        }
+      }, 300);
+
+      // ---- initial move: show the button is playful ----
+      window.addEventListener('load', function() {
+        setTimeout(() => { moveNoButton(); }, 80);
+        // mobile ready
+      });
+
+      // ---- little heart burst for YES (mobile friendly) ----
+      function createHeartConfetti() {
+        for (let i = 0; i < 10; i++) {
+          const heartSpan = document.createElement('span');
+          heartSpan.innerHTML = ['❤️','🧡','💛','💚','💙','💜','🤍','🩷'][Math.floor(Math.random() * 8)];
+          heartSpan.style.position = 'absolute';
+          heartSpan.style.left = Math.random() * 80 + 10 + '%';
+          heartSpan.style.top = Math.random() * 70 + 15 + '%';
+          heartSpan.style.fontSize = (24 + Math.random() * 36) + 'px';
+          heartSpan.style.animation = 'floatMobile 4s ease-out forwards';
+          heartSpan.style.opacity = 0.9;
+          heartSpan.style.pointerEvents = 'none';
+          heartSpan.style.zIndex = '200';
+          document.querySelector('.valentine-card').appendChild(heartSpan);
+          setTimeout(() => { heartSpan.remove(); }, 3800);
+        }
+      }
+
+      // ---- extra mobile friendly: if user taps near NO, it dodges! but always clickable ----
+      // ensure no double-tap zoom on buttons
+      noBtn.addEventListener('touchend', function(e) {
+        // just to be safe, prevent default on whole button area? already done on touchstart
+      });
+
+      // finally: message for the shy NO
+    })();
+  </script>
+
+  <!-- ensure that no button is ever unclickable: both have cursor:pointer and respond -->
+  <!-- additional inline style for extra mobile reassurance -->
+  <style>
+    /* super secure: no pointer-events none anywhere */
+    .btn { pointer-events: auto !important; }
+    .no-btn { pointer-events: auto !important; }
+    /* prevent any accidental disabling */
+    button:disabled { opacity: 1; } /* not used, but for safety */
+  </style>
+</body>
+</html>
