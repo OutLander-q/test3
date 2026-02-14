@@ -4,14 +4,113 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>💘 Valentine · mobile love run</title>
-  <!-- باقي الـ head كما هو بدون أي تغيير -->
+  <!-- mobile optimized: touch friendly, no overflow, buttons always clickable -->
   <style>
-    /* كل الـ CSS كما هو تمامًا – بدون أي تعديل */
-    /* ... (كل الستايل السابق يبقى كما هو) ... */
+    /* reset & mobile perfection */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent; /* remove grey flash on tap */
+    }
+
+    body {
+      background: radial-gradient(circle at 10% 30%, #ffb6c1, #f898a4);
+      font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      position: relative;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* 🎈 floating balloons – soft & dreamy */
+    .balloon-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .balloon {
+      position: absolute;
+      background: rgba(255, 215, 215, 0.65);
+      backdrop-filter: blur(1px);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      box-shadow: inset -3px -3px 10px rgba(0,0,0,0.05), inset 8px 5px 20px rgba(255,255,255,0.7);
+      width: 55px;
+      height: 68px;
+      bottom: -80px;
+      animation: floatMobile 16s linear infinite;
+      border: 1.5px solid rgba(255, 240, 240, 0.6);
+    }
+
+    .balloon::after {
+      content: "🪢";
+      position: absolute;
+      bottom: -14px;
+      left: 20px;
+      font-size: 18px;
+      transform: rotate(-8deg);
+      color: #79553b;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    }
+
+    .balloon:nth-child(1) { left: 5%; width: 48px; height: 60px; background: #ff95a8; animation-delay: 0s; }
+    .balloon:nth-child(2) { left: 18%; width: 58px; height: 72px; background: #faaaaa; animation-delay: 2s; }
+    .balloon:nth-child(3) { left: 35%; width: 40px; height: 52px; background: #ffc0cb; animation-delay: 1s; }
+    .balloon:nth-child(4) { left: 55%; width: 62px; height: 74px; background: #ffa5a5; animation-delay: 4.5s; }
+    .balloon:nth-child(5) { left: 72%; width: 46px; height: 58px; background: #e89f9f; animation-delay: 2.8s; }
+    .balloon:nth-child(6) { left: 88%; width: 52px; height: 64px; background: #ffb2b2; animation-delay: 6s; }
+    .balloon:nth-child(7) { left: 45%; width: 60px; height: 74px; background: #ffa7b1; animation-delay: 3.2s; }
+    .balloon:nth-child(8) { left: 80%; width: 44px; height: 56px; background: #fba9b6; animation-delay: 7s; }
+    .balloon:nth-child(9) { left: 92%; width: 50px; height: 62px; background: #ff9eb5; animation-delay: 5.2s; }
+    .balloon:nth-child(10) { left: 12%; width: 54px; height: 66px; background: #ffa3b3; animation-delay: 8s; }
+
+    @keyframes floatMobile {
+      0% { bottom: -90px; transform: translateX(0) rotate(1deg); opacity: 0.7; }
+      50% { transform: translateX(12px) rotate(-2deg); opacity: 1; }
+      100% { bottom: 120%; transform: translateX(-16px) rotate(3deg); opacity: 0.4; }
+    }
+
+    /* باقي الـ CSS كما كان تمامًا (valentine-card, buttons, etc.) */
+    .valentine-card {
+      background: rgba(255, 250, 250, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 48px 48px 48px 48px;
+      box-shadow: 0 20px 40px rgba(180, 40, 70, 0.25), 0 0 0 5px rgba(255, 240, 245, 0.7);
+      padding: 28px 22px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      position: relative;
+      z-index: 30;
+      margin: 8px auto;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: #b82b4a;
+      text-shadow: 3px 3px 0 #ffe0e8, 4px 4px 12px rgba(190, 50, 70, 0.25);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    /* ... باقي الستايل (heart-decoration, question, button-area, btn, yes-btn, no-btn, footer-message, etc.) كما كان ... */
   </style>
 </head>
 <body>
-  <!-- floating balloons – بدون تغيير -->
+
   <div class="balloon-bg">
     <div class="balloon"></div>
     <div class="balloon"></div>
@@ -25,7 +124,6 @@
     <div class="balloon"></div>
   </div>
 
-  <!-- التعديل الوحيد هنا -->
   <div class="valentine-card">
     <div class="heart-decoration">💗💗💗</div>
     <h1>💘 Remas, Be mine? 💘</h1>
@@ -45,12 +143,10 @@
     </div>
   </div>
 
-  <!-- باقي الكود (الـ script والـ credit) كما هو بدون أي تغيير -->
   <div class="mobile-credit">
   </div>
 
   <script>
-    // كل الـ JavaScript كما هو تمامًا – بدون تعديل
     (function() {
       "use strict";
 
@@ -106,9 +202,64 @@
         fleeNoButton();
       });
 
-      // باقي الـ event listeners والدوال كما هي...
-      // (touchstart, touchmove, mouseenter, mousemove, focus, resize, setInterval, createHeartConfetti...)
-      
+      noBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        fleeNoButton();
+      }, { passive: false });
+
+      noBtn.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        fleeNoButton();
+      }, { passive: false });
+
+      noBtn.addEventListener('mouseenter', fleeNoButton);
+
+      noBtn.addEventListener('mousemove', function(e) {
+        if (Math.random() > 0.6) {
+          requestAnimationFrame(fleeNoButton);
+        }
+      });
+
+      noBtn.addEventListener('focus', function() {
+        setTimeout(() => { fleeNoButton(); }, 30);
+      });
+
+      window.addEventListener('resize', function() {
+        noBtn.style.transform = `translate(0, 0)`;
+        setTimeout(() => { moveNoButton(); }, 20);
+      });
+
+      setInterval(function() {
+        if (!buttonArea || !noBtn) return;
+        const container = buttonArea.getBoundingClientRect();
+        const no = noBtn.getBoundingClientRect();
+        if (no.right > container.right + 8 || no.left < container.left - 8 ||
+            no.bottom > container.bottom + 8 || no.top < container.top - 8) {
+          noBtn.style.transform = `translate(0, 0)`;
+          setTimeout(() => { moveNoButton(); }, 30);
+        }
+      }, 300);
+
+      window.addEventListener('load', function() {
+        setTimeout(() => { moveNoButton(); }, 80);
+      });
+
+      function createHeartConfetti() {
+        for (let i = 0; i < 10; i++) {
+          const heartSpan = document.createElement('span');
+          heartSpan.innerHTML = ['❤️','🧡','💛','💚','💙','💜','🤍','🩷'][Math.floor(Math.random() * 8)];
+          heartSpan.style.position = 'absolute';
+          heartSpan.style.left = Math.random() * 80 + 10 + '%';
+          heartSpan.style.top = Math.random() * 70 + 15 + '%';
+          heartSpan.style.fontSize = (24 + Math.random() * 36) + 'px';
+          heartSpan.style.animation = 'floatMobile 4s ease-out forwards';
+          heartSpan.style.opacity = 0.9;
+          heartSpan.style.pointerEvents = 'none';
+          heartSpan.style.zIndex = '200';
+          document.querySelector('.valentine-card').appendChild(heartSpan);
+          setTimeout(() => { heartSpan.remove(); }, 3800);
+        }
+      }
     })();
   </script>
 
