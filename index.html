@@ -4,14 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>💘 Valentine · mobile love run</title>
-  <!-- mobile optimized: touch friendly, no overflow, buttons always clickable -->
   <style>
-    /* reset & mobile perfection */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent; /* remove grey flash on tap */
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -27,7 +25,6 @@
       margin: 0;
     }
 
-    /* 🎈 floating balloons – soft & dreamy */
     .balloon-bg {
       position: fixed;
       top: 0;
@@ -71,20 +68,19 @@
     .balloon:nth-child(7) { left: 45%; width: 60px; height: 74px; background: #ffa7b1; animation-delay: 3.2s; }
     .balloon:nth-child(8) { left: 80%; width: 44px; height: 56px; background: #fba9b6; animation-delay: 7s; }
     .balloon:nth-child(9) { left: 92%; width: 50px; height: 62px; background: #ff9eb5; animation-delay: 5.2s; }
-    .balloon:nth-child(10) { left: 12%; width: 54px; height: 66px; background: #ffa3b3; animation-delay: 8s; }
+    .balloon:nth-child(10){ left: 12%; width: 54px; height: 66px; background: #ffa3b3; animation-delay: 8s; }
 
     @keyframes floatMobile {
-      0% { bottom: -90px; transform: translateX(0) rotate(1deg); opacity: 0.7; }
-      50% { transform: translateX(12px) rotate(-2deg); opacity: 1; }
+      0%   { bottom: -90px; transform: translateX(0) rotate(1deg); opacity: 0.7; }
+      50%  { transform: translateX(12px) rotate(-2deg); opacity: 1; }
       100% { bottom: 120%; transform: translateX(-16px) rotate(3deg); opacity: 0.4; }
     }
 
-    /* باقي الـ CSS كما كان تمامًا (valentine-card, buttons, etc.) */
     .valentine-card {
       background: rgba(255, 250, 250, 0.8);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border-radius: 48px 48px 48px 48px;
+      border-radius: 48px;
       box-shadow: 0 20px 40px rgba(180, 40, 70, 0.25), 0 0 0 5px rgba(255, 240, 245, 0.7);
       padding: 28px 22px;
       max-width: 500px;
@@ -106,31 +102,92 @@
       word-break: break-word;
     }
 
-    /* ... باقي الستايل (heart-decoration, question, button-area, btn, yes-btn, no-btn, footer-message, etc.) كما كان ... */
+    .heart-decoration {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+    }
+
+    .question {
+      font-size: 1.6rem;
+      color: #c13554;
+      margin: 24px 0 32px;
+      font-weight: 600;
+    }
+
+    .button-area {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      position: relative;
+      min-height: 70px;
+    }
+
+    .btn {
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 0 #31333b, 0 12px 25px rgba(0,0,0,0.2);
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .yes-btn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .yes-btn:hover {
+      background: #ff6b80;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 0 #31333b, 0 18px 30px rgba(0,0,0,0.25);
+    }
+
+    .no-btn {
+      background: #6b7280;
+      color: white;
+      position: relative;
+    }
+
+    .footer-message {
+      margin-top: 32px;
+      font-size: 1.3rem;
+      color: #7f1d1d;
+      font-weight: 500;
+      min-height: 60px;
+      padding: 12px;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+    }
+
+    /* mobile improvements */
+    @media (max-width: 480px) {
+      h1 { font-size: 2.1rem; }
+      .btn { font-size: 1.3rem; padding: 14px 32px; }
+      .button-area { gap: 18px; }
+    }
   </style>
 </head>
 <body>
 
   <div class="balloon-bg">
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
+    <div class="balloon"></div><div class="balloon"></div><div class="balloon"></div>
+    <div class="balloon"></div><div class="balloon"></div><div class="balloon"></div>
+    <div class="balloon"></div><div class="balloon"></div><div class="balloon"></div>
     <div class="balloon"></div>
   </div>
 
   <div class="valentine-card">
     <div class="heart-decoration">💗💗💗</div>
-    <h1>💘 Remas, Be mine? 💘</h1>
-    <div style="font-size:1.5rem; color:#b5485e; margin-bottom: 4px;">✨ my valentine ✨</div>
+    <h1>💘 Noor, Be mine? 💘</h1>
+    <div style="font-size:1.4rem; color:#b5485e; margin-bottom: 12px;">✨ my valentine ✨</div>
     
     <div class="question">
-      will you say YES?
+      Will you say YES? 🥰
     </div>
 
     <div class="button-area" id="buttonArea">
@@ -139,11 +196,8 @@
     </div>
 
     <div class="footer-message" id="messageBox">
-      💞 tap YES — forever with me 💞
+      💞 Tap YES — let's make this Valentine's unforgettable 💞
     </div>
-  </div>
-
-  <div class="mobile-credit">
   </div>
 
   <script>
@@ -155,118 +209,88 @@
       const messageBox = document.getElementById('messageBox');
       const buttonArea = document.getElementById('buttonArea');
 
+      function hideNoButton() {
+        if (noBtn) {
+          noBtn.style.display = 'none';
+          noBtn.remove(); // completely remove from DOM
+        }
+      }
+
       function moveNoButton() {
-        if (!buttonArea || !noBtn) return;
+        if (!noBtn || noBtn.style.display === 'none') return;
 
         const containerRect = buttonArea.getBoundingClientRect();
         const noRect = noBtn.getBoundingClientRect();
 
-        const btnWidth = noRect.width;
-        const btnHeight = noRect.height;
+        const maxX = Math.max(0, containerRect.width - noRect.width - 20);
+        const maxY = Math.max(0, containerRect.height - noRect.height - 20);
 
-        const maxX = Math.max(0, containerRect.width - btnWidth - 6);
-        const maxY = Math.max(0, containerRect.height - btnHeight - 6);
+        const deltaX = Math.floor(Math.random() * maxX);
+        const deltaY = Math.floor(Math.random() * maxY);
 
-        let deltaX = 0, deltaY = 0;
-        if (maxX > 5) deltaX = Math.floor(Math.random() * maxX);
-        if (maxY > 5) deltaY = Math.floor(Math.random() * maxY);
-        
         noBtn.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-        noBtn.style.transition = 'transform 0.2s cubic-bezier(0.2, 1.2, 0.5, 1.2)';
+        noBtn.style.transition = 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)';
       }
 
       function fleeNoButton() {
+        if (noBtn.style.display === 'none') return;
         moveNoButton();
-        noBtn.style.boxShadow = '0 10px 0 #31333b, 0 0 18px #ffb6c1';
-        setTimeout(() => {
-          noBtn.style.boxShadow = '0 10px 0 #31333b, 0 12px 25px rgba(0,0,0,0.25)';
-        }, 180);
       }
 
-      yesBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        messageBox.innerHTML = 'Tu as dit OUI! 🌸 Un sourire partagé, une étincelle de joie, et peut-être le début de quelque chose de spécial';
+      yesBtn.addEventListener('click', () => {
+        messageBox.innerHTML = 'YES!! 🥰 My heart is officially yours this Valentine’s 💕';
         messageBox.style.background = '#ffe4ec';
         messageBox.style.border = '6px solid #ff99aa';
         messageBox.style.color = '#a12d4a';
-        messageBox.style.fontSize = '1.5rem';
+        messageBox.style.fontSize = '1.6rem';
+        hideNoButton();
         createHeartConfetti();
       });
 
-      noBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        messageBox.innerHTML = '😢 you clicked NO… but the YES button is still waiting! 😘';
-        messageBox.style.background = '#ffdede';
-        messageBox.style.border = '6px solid #d88a8a';
-        messageBox.style.color = '#701c34';
-        fleeNoButton();
+      noBtn.addEventListener('click', () => {
+        if (confirm("Are you really sure? 😢\nThe YES button is still waiting for you...")) {
+          messageBox.innerHTML = "Okay... but my heart will always hope you'll say YES someday 💔✨";
+          messageBox.style.background = '#fee2e2';
+          messageBox.style.border = '6px solid #fca5a5';
+          messageBox.style.color = '#7f1d1d';
+          hideNoButton();
+        } else {
+          messageBox.innerHTML = "Phew! I knew you couldn't resist me 😘<br>Come on… say YES!";
+          messageBox.style.background = '#ecfdf5';
+          messageBox.style.border = '6px solid #6ee7b7';
+          messageBox.style.color = '#065f46';
+          fleeNoButton();
+        }
       });
 
-      noBtn.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        fleeNoButton();
-      }, { passive: false });
-
-      noBtn.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-        fleeNoButton();
-      }, { passive: false });
-
+      // Make NO button very hard to click on mobile & desktop
+      noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); fleeNoButton(); }, { passive: false });
+      noBtn.addEventListener('touchmove',  (e) => { e.preventDefault(); fleeNoButton(); }, { passive: false });
       noBtn.addEventListener('mouseenter', fleeNoButton);
+      noBtn.addEventListener('mousemove',   () => { if (Math.random() > 0.5) fleeNoButton(); });
 
-      noBtn.addEventListener('mousemove', function(e) {
-        if (Math.random() > 0.6) {
-          requestAnimationFrame(fleeNoButton);
-        }
-      });
-
-      noBtn.addEventListener('focus', function() {
-        setTimeout(() => { fleeNoButton(); }, 30);
-      });
-
-      window.addEventListener('resize', function() {
-        noBtn.style.transform = `translate(0, 0)`;
-        setTimeout(() => { moveNoButton(); }, 20);
-      });
-
-      setInterval(function() {
-        if (!buttonArea || !noBtn) return;
-        const container = buttonArea.getBoundingClientRect();
-        const no = noBtn.getBoundingClientRect();
-        if (no.right > container.right + 8 || no.left < container.left - 8 ||
-            no.bottom > container.bottom + 8 || no.top < container.top - 8) {
-          noBtn.style.transform = `translate(0, 0)`;
-          setTimeout(() => { moveNoButton(); }, 30);
-        }
-      }, 300);
-
-      window.addEventListener('load', function() {
-        setTimeout(() => { moveNoButton(); }, 80);
+      window.addEventListener('load', () => {
+        setTimeout(moveNoButton, 100);
       });
 
       function createHeartConfetti() {
-        for (let i = 0; i < 10; i++) {
-          const heartSpan = document.createElement('span');
-          heartSpan.innerHTML = ['❤️','🧡','💛','💚','💙','💜','🤍','🩷'][Math.floor(Math.random() * 8)];
-          heartSpan.style.position = 'absolute';
-          heartSpan.style.left = Math.random() * 80 + 10 + '%';
-          heartSpan.style.top = Math.random() * 70 + 15 + '%';
-          heartSpan.style.fontSize = (24 + Math.random() * 36) + 'px';
-          heartSpan.style.animation = 'floatMobile 4s ease-out forwards';
-          heartSpan.style.opacity = 0.9;
-          heartSpan.style.pointerEvents = 'none';
-          heartSpan.style.zIndex = '200';
-          document.querySelector('.valentine-card').appendChild(heartSpan);
-          setTimeout(() => { heartSpan.remove(); }, 3800);
+        for (let i = 0; i < 12; i++) {
+          const heart = document.createElement('span');
+          heart.innerHTML = ['❤️','🧡','💛','💚','💙','💜','🩷','🤍'][Math.floor(Math.random()*8)];
+          heart.style.position = 'absolute';
+          heart.style.left = Math.random()*80 + 10 + '%';
+          heart.style.top  = Math.random()*60 + 10 + '%';
+          heart.style.fontSize = (24 + Math.random()*40) + 'px';
+          heart.style.animation = 'floatMobile 5s ease-out forwards';
+          heart.style.opacity = 0.9;
+          heart.style.pointerEvents = 'none';
+          heart.style.zIndex = '200';
+          document.querySelector('.valentine-card').appendChild(heart);
+          setTimeout(() => heart.remove(), 5000);
         }
       }
     })();
   </script>
 
-  <style>
-    .btn { pointer-events: auto !important; }
-    .no-btn { pointer-events: auto !important; }
-    button:disabled { opacity: 1; }
-  </style>
 </body>
 </html>
